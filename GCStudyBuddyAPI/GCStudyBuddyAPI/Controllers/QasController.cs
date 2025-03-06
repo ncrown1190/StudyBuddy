@@ -46,43 +46,43 @@ namespace GCStudyBuddyAPI.Controllers
         [HttpGet("{id}")]
         public async Task<ActionResult<Qa>> GetQa(int id)
         {
-            var qa = await _context.Qas.FindAsync(id);
+            var questionAnswer = await _context.Qas
+                .Where(q => q.Id == id)
+                .Select(q => new QaDTO
+                {
+                    Id = q.Id,
+                    Question = q.Question,
+                    Answer = q.Answer,
+                }).ToListAsync();
 
-            if (qa == null)
-            {
-                return NotFound();
-            }
+            return Ok(questionAnswer);
 
-            return qa;
+            //var qa = await _context.Qas.FindAsync(id);
+
+            //if (qa == null)
+            //{
+            //    return NotFound();
+            //}
+
+            //return qa;
         }
 
         // PUT: api/Qas/5
         // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
         [HttpPut("{id}")]
-        public async Task<IActionResult> PutQa(int id, Qa qa)
+        public async Task<IActionResult> UpdateQa(int id, [FromBody] QaDTO questionAnswerDto)
         {
-            if (id != qa.Id)
+
+            var existing = await _context.Qas.FindAsync(id);
+
+            if (existing == null)
             {
-                return BadRequest();
+                return NotFound("No question exists with this Id");
             }
 
-            _context.Entry(qa).State = EntityState.Modified;
-
-            try
-            {
-                await _context.SaveChangesAsync();
-            }
-            catch (DbUpdateConcurrencyException)
-            {
-                if (!QaExists(id))
-                {
-                    return NotFound();
-                }
-                else
-                {
-                    throw;
-                }
-            }
+            existing.Question = questionAnswerDto.Question;
+            existing.Answer = questionAnswerDto.Answer;
+            await _context.SaveChangesAsync();
 
             return NoContent();
         }
@@ -90,12 +90,26 @@ namespace GCStudyBuddyAPI.Controllers
         // POST: api/Qas
         // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
         [HttpPost]
-        public async Task<ActionResult<Qa>> PostQa(Qa qa)
+        public async Task<ActionResult<QaDTO>> AddQa(QaCreateDTO questionAnswerDto)
         {
-            _context.Qas.Add(qa);
+            var newQuestionAnswer = new Qa
+            {
+                //Id = questionAnswerDto.Id,
+                Question = questionAnswerDto.Question,
+                Answer = questionAnswerDto.Answer,
+            };
+
+            _context.Qas.Add(newQuestionAnswer);
             await _context.SaveChangesAsync();
 
-            return CreatedAtAction("GetQa", new { id = qa.Id }, qa);
+            var questionAnswerCreateDto = new QaDTO
+            {
+                Id = newQuestionAnswer.Id,
+                Question = newQuestionAnswer.Question,
+                Answer = newQuestionAnswer.Answer,
+            };
+
+            return CreatedAtAction(nameof(GetQas), new {id = newQuestionAnswer.Id }, questionAnswerCreateDto);
         }
 
         // DELETE: api/Qas/5
