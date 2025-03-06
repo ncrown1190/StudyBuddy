@@ -6,6 +6,7 @@ using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using GCStudyBuddyAPI.Entities;
+using GCStudyBuddyAPI.DTOs;
 
 namespace GCStudyBuddyAPI.Controllers
 {
@@ -22,9 +23,23 @@ namespace GCStudyBuddyAPI.Controllers
 
         // GET: api/Qas
         [HttpGet]
-        public async Task<ActionResult<IEnumerable<Qa>>> GetQas()
+        //public async Task<ActionResult<IEnumerable<Qa>>> GetQas()
+        //{
+        //    return await _context.Qas.ToListAsync();
+        //}
+
+        public async Task<ActionResult<IEnumerable<QaDTO>>> GetQas()
         {
-            return await _context.Qas.ToListAsync();
+            var questionAnswer = await _context.Qas.ToListAsync();
+
+            var questionAnswerDTOs = questionAnswer.Select(question => new QaDTO
+            {
+                Id = question.Id,
+                Question = question.Question,
+                Answer = question.Answer,
+            }).ToList();
+
+            return Ok(questionAnswerDTOs);
         }
 
         // GET: api/Qas/5
