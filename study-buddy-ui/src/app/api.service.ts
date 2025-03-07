@@ -15,7 +15,7 @@ export class ApiService {
   getQuestionById(id: number){
     this.http.get('${this.apiUrl}/Qas/${id}')
   }
-  addQuestionAnswer(question: string){
+  addQuestionAnswer(question: QuestionAnswer){
     return this.http.post('${this.baseUrl}/Qas',question)
   }
   editQuestionAnswer(id: number, question: QuestionAnswer){
@@ -30,7 +30,7 @@ export class ApiService {
   
   }
   getFavorites(){
-
+  
   }
   deleteFavorite(){
 

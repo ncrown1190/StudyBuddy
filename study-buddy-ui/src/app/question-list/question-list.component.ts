@@ -23,10 +23,12 @@ export class QuestionListComponent implements OnInit {
     );
   }
 
-  ShowQuestions(): QuestionAnswer[] {
-    this.apiService.getQuestionsAnswers(
 
-    ).subscribe(response => {
+  // What does this do?
+  ShowQuestions(): QuestionAnswer[] {
+    this.apiService.getQuestionsAnswers()
+    .subscribe(
+      response => {
       console.log(response)
       this.QaList = response as any[]
     })
