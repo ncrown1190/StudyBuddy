@@ -10,8 +10,11 @@ export class ApiService {
   private baseUrl = 'https://localhost:7274/api';
   constructor(private http: HttpClient) { }
 
-  //userId: string 
+  private userId: string = '123456789';
 
+  getUserId(): string {
+    return this.userId;
+  }
   
   getQuestionsAnswers() {
     return this.http.get(`${this.baseUrl}/Qas`);
@@ -36,7 +39,7 @@ export class ApiService {
   getFavorites(){
     return this.http.get(`${this.baseUrl}/UserFavorites`);
   }
-  deleteFavorite(){
-
+  deleteFavorite(questionId: number){
+    return this.http.delete(`${this.baseUrl}/UserFavorites/${questionId}`);
   }
 }

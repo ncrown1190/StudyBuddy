@@ -14,8 +14,9 @@ export class QuestionListComponent implements OnInit {
   QaList: QuestionAnswer[]=[];
 
   constructor(private apiService: ApiService){}
- 
+  userId: string='';
   ngOnInit(): void {
+    this.userId = this.apiService.getUserId();
     this.apiService.getQuestionsAnswers().subscribe(
       data => {
         this.QaList = data as any[];

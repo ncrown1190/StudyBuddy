@@ -15,6 +15,8 @@ export class QuestionFormComponent {
 
   constructor(private apiService: ApiService) {}
 
+  
+
   newQuestion(addQuestion: any) {
     if (!addQuestion.question.trim() || !addQuestion.answer.trim()) {
       console.error('Both question and answer are required');
