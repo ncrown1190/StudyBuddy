@@ -92,4 +92,16 @@ div {
     align-items: center;
     /* gap: 5rem; */
   }
+  .star-button {
+    background: none;
+    border: none;
+    color: gold;
+    font-size: 20px;
+    cursor: pointer;
+    transition: transform 0.2s;
+  }
   
+  .star-button:hover {
+    transform: scale(1.2);
+    color: darkgoldenrod;
+  }
