@@ -12,9 +12,9 @@ export interface FavoriteQAInterface {
   }
 
   export interface Favorite {
-    id: number;
-    favoriteId: number;
+    id?: number;
+    favoriteId?: number;
     userId: string;
     questionId: number;
-    answerId: string;
+    answerId?: string;
 }

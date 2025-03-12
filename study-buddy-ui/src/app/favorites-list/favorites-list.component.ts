@@ -20,15 +20,30 @@ export class FavoritesListComponent  implements OnInit{
   Question: QuestionAnswer = {} as QuestionAnswer;
   toggleAnswer: boolean = false;
 
-  userId = '11111' //Place holder
+  userId = ''; //Place holder
 
   constructor(private apiService: ApiService){}
 
   ngOnInit(): void {
+    this.userId = this.apiService.getUserId();
     this.apiService.getFavorites().subscribe((data) => {
       this.favoriteList = data as any[];
     })
   }
+
+
+
+  removeFromFavorites(favoriteId: number) {
+    if (!confirm("Are you sure you want to remove this favorite?")) return;
+
+    this.apiService.deleteFavorite(favoriteId).subscribe(() => {
+      // Remove the favorite from the UI
+      this.favoriteList = this.favoriteList.filter(fav => fav.favoriteId !== favoriteId);
+    }, error => {
+      console.error("Error removing favorite:", error);
+    });
+  }
+
   newFavorite(addFavorite: any) {
     if (!addFavorite.questionId.trim() || !addFavorite.userId.trim()) {
       console.error('Both question and answer are required');

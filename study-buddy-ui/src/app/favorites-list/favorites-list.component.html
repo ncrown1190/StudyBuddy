@@ -2,23 +2,20 @@
   <h2>Favorite Questions</h2>
   <div class="fav-container">
     <ul class="grid-div">
-      <li *ngFor="let question of favoriteList let i = index">
+      <li *ngFor="let favorite of favoriteList; let i = index">
         <div class="container">
           <div class="card">
-            <!-- <div class="front">
-                  <span>UserId: {{ question.userId}}</span>
-                </div> -->
             <div class="front">
-              <span>Q[{{ i + 1 }}]: {{ question.question.question }}</span>
-              <!-- <button
-                class="btn btn-primary btn-sm ans"
-                (click)="showAnswer(question)"
-              >
-                {{ question.toggleAnswer ? "Hide Answer" : "Show Answer" }}
-              </button> -->
+              <span>Q[{{ i + 1 }}]: {{ favorite.question.question }}</span>
+              <button class="star-button" (click)="removeFromFavorites(favorite.favoriteId)">
+                ★
+              </button>
             </div>
             <div class="back">
-              <span>A: {{ question.question.answer }}</span>
+              <span>A: {{ favorite.question.answer }}</span>
+              <button class="star-button" (click)="removeFromFavorites(favorite.favoriteId)">
+                ★
+              </button>
             </div>
           </div>
         </div>

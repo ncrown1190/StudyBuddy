@@ -1,7 +1,8 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { QuestionAnswer } from './models/question-answer';
-import { Favorite } from './models/favorite.model';
+import { Favorite, FavoriteQAInterface, QuestionAnswerInterface } from './models/favorite.model';
+import { Observable } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
@@ -10,11 +11,14 @@ export class ApiService {
   private baseUrl = 'https://localhost:7274/api';
   constructor(private http: HttpClient) { }
 
-  //userId: string 
+  private userId: string = '123456789';
 
+  getUserId(): string {
+    return this.userId;
+  }
   
-  getQuestionsAnswers() {
-    return this.http.get(`${this.baseUrl}/Qas`);
+  getQuestionsAnswers(): Observable<QuestionAnswerInterface[]> {
+    return this.http.get<QuestionAnswerInterface[]>(`${this.baseUrl}/Qas`);
   }
   getQuestionById(id: number){
     this.http.get(`${this.baseUrl}/Qas/${id}`)
@@ -30,13 +34,13 @@ export class ApiService {
   }
 
   //Favorites
-  addFavorite(favorite: Favorite){
-  return this.http.post(`${this.baseUrl}/UserFavorites`, favorite);
+  addFavorite(favorite: Favorite): Observable<FavoriteQAInterface> {
+    return this.http.post<FavoriteQAInterface>(`${this.baseUrl}/UserFavorites`, favorite);
   }
-  getFavorites(){
-    return this.http.get(`${this.baseUrl}/UserFavorites`);
+  getFavorites(): Observable<FavoriteQAInterface[]> {
+    return this.http.get<FavoriteQAInterface[]>(`${this.baseUrl}/UserFavorites`);
   }
-  deleteFavorite(){
-
+  deleteFavorite(favoriteId: number): Observable<void> {
+    return this.http.delete<void>(`${this.baseUrl}/UserFavorites/${favoriteId}`);
   }
 }

@@ -1,17 +1,27 @@
 <div class="cards-div">
-    <h2>Questions</h2>
-    <ul class="grid-div">
-      <li *ngFor="let question of QaList let i = index">
-        <div class="container">
-          <div class="card">
-            <div class="front">
-              <span>Q[{{ i + 1 }}]: {{ question.question }}</span>
-            </div>
-            <div class="back">
-              <span>A[{{ i + 1 }}]: {{ question.answer }}</span>
-            </div>
+  <h2>Questions</h2>
+  <ul class="grid-div">
+    <li *ngFor="let question of QaList; let i = index">
+      <div class="container">
+        <div class="card">
+          <div class="front">
+            <span>Q[{{ i + 1 }}]: {{ question.question }}</span>
+            <span 
+              class="star" 
+              (click)="toggleFavorite(question)">
+              {{ isFavorite(question.id) ? '⭐' : '☆' }}
+            </span>
+          </div>
+          <div class="back">
+            <span>A[{{ i + 1 }}]: {{ question.answer }}</span>
+            <span 
+              class="star" 
+              (click)="toggleFavorite(question)">
+              {{ isFavorite(question.id) ? '⭐' : '☆' }}
+            </span>
           </div>
         </div>
-      </li>
-    </ul>
-  </div>
+      </div>
+    </li>
+  </ul>
+</div>
