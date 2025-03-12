@@ -1,16 +1,17 @@
 .grid-div {
   display: grid;
-  grid-template-columns: auto auto;
+  grid-template-columns: auto auto auto;
 }
 .cards-div {
   margin-top: 131px;
 }
 
 h2 {
+  font-family: cursive;
   display: flex;
   justify-content: center;
   padding-top: 15px;
-  color: yellow;
+  /* color: yellow; */
   font-size: 45px;
 }
 
