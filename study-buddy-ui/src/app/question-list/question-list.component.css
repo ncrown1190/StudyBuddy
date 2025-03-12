@@ -1,87 +1,88 @@
 .grid-div {
-    display: grid;
-    grid-template-columns: auto auto;
-  }
-.cards-div{
+  display: grid;
+  grid-template-columns: auto auto;
+}
+.cards-div {
   margin-top: 131px;
 }
 
-  h2 {
-    display: flex;
-    justify-content: center;
-    padding-top: 15px;
-    color: white;
-  }
-  
-  li {
-    list-style: none;
-  }
-  .container {
-    margin: 20px;
-    width: 400px;
-    height: 200px;
-    perspective: 800px;
-  }
-  .container:hover > .card {
-    cursor: pointer;
-    transform: rotateY(180deg);
-  }
-  
-  .card {
-    height: 100%;
-    width: 100%;
-    padding: 10px;
-    position: relative;
-    transition: transform 3500ms;
-    transform-style: preserve-3d;
-  }
-  .front,
-  .back {
-    height: 100%;
-    width: 100%;
-    font-size: 20px;
-    font-weight: 500;
-    border-radius: 2rem;
-    box-shadow: 0 0 5px 2px rgba(50, 50, 50, 0.25);
-    position: absolute;
-    backface-visibility: hidden;
-  }
-  .front {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    background-color: #cbcbc9;
-  }
-  span {
-    padding: 25px;
-  }
-  
-  .back {
-    background-color: #e3d5d5;
-    transform: rotateY(180deg);
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    /* gap: 5rem; */
-  }
-  .star {
-    position: absolute;
-    top: 10px;  /* Adjust this value to fine-tune positioning */
-    right: 15px; /* Moves the star to the right */
-    font-size: 1.5rem; /* Adjust star size */
-    cursor: pointer;
-    transition: color 0.3s ease-in-out;
-  }
-  
-  .star:hover {
-    transform: scale(1.2); /* Slight zoom effect on hover */
-  }
-  
-  .front .star,
-  .back .star {
-    position: absolute;
-    top: 10px;
-    right: 15px;
-  }
+h2 {
+  display: flex;
+  justify-content: center;
+  padding-top: 15px;
+  color: yellow;
+  font-size: 45px;
+}
+
+li {
+  list-style: none;
+}
+.container {
+  margin: 20px;
+  width: 400px;
+  height: 200px;
+  perspective: 800px;
+}
+.container:hover > .card {
+  cursor: pointer;
+  transform: rotateY(180deg);
+}
+
+.card {
+  height: 100%;
+  width: 100%;
+  padding: 10px;
+  position: relative;
+  transition: transform 3500ms;
+  transform-style: preserve-3d;
+}
+.front,
+.back {
+  height: 100%;
+  width: 100%;
+  font-size: 20px;
+  font-weight: 500;
+  border-radius: 2rem;
+  box-shadow: 0 0 5px 2px rgba(50, 50, 50, 0.25);
+  position: absolute;
+  backface-visibility: hidden;
+}
+.front {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background-color: #cbcbc9;
+}
+span {
+  padding: 25px;
+}
+
+.back {
+  background-color: #e3d5d5;
+  transform: rotateY(180deg);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  /* gap: 5rem; */
+}
+.star {
+  position: absolute;
+  top: 10px; /* Adjust this value to fine-tune positioning */
+  right: 15px; /* Moves the star to the right */
+  font-size: 1.5rem; /* Adjust star size */
+  cursor: pointer;
+  transition: color 0.3s ease-in-out;
+}
+
+.star:hover {
+  transform: scale(1.2); /* Slight zoom effect on hover */
+}
+
+.front .star,
+.back .star {
+  position: absolute;
+  top: 10px;
+  right: 15px;
+}
