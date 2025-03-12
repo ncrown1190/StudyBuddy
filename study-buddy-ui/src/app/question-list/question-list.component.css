@@ -66,4 +66,22 @@
     align-items: center;
     /* gap: 5rem; */
   }
+  .star {
+    position: absolute;
+    top: 10px;  /* Adjust this value to fine-tune positioning */
+    right: 15px; /* Moves the star to the right */
+    font-size: 1.5rem; /* Adjust star size */
+    cursor: pointer;
+    transition: color 0.3s ease-in-out;
+  }
   
+  .star:hover {
+    transform: scale(1.2); /* Slight zoom effect on hover */
+  }
+  
+  .front .star,
+  .back .star {
+    position: absolute;
+    top: 10px;
+    right: 15px;
+  }
