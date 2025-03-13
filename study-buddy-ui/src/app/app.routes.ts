@@ -6,5 +6,6 @@ import { QuestionFormComponent } from './question-form/question-form.component';
 export const routes: Routes = [
     {path:'question', component: QuestionListComponent },
     {path:'favoriteList', component: FavoritesListComponent},
-    {path: 'qaform', component: QuestionFormComponent}
+    {path: 'qaform', component: QuestionFormComponent},
+    {path: '', redirectTo: 'question', pathMatch: 'full'} //Default
 ];

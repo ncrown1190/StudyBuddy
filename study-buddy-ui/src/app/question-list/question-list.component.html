@@ -9,12 +9,14 @@
             <span class="star" (click)="toggleFavorite(question)">
               {{ isFavorite(question.id) ? "⭐" : "☆" }}
             </span>
+            <span class="delete-btn" (click)="DeleteQuestion(question.id)">🗑️</span>
           </div>
           <div class="back">
             <span>A[{{ i + 1 }}]: {{ question.answer }}</span>
             <span class="star" (click)="toggleFavorite(question)">
               {{ isFavorite(question.id) ? "⭐" : "☆" }}
             </span>
+            <span class="delete-btn" (click)="DeleteQuestion(question.id)">🗑️</span>
           </div>
         </div>
       </div>

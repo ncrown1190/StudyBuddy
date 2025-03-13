@@ -32,6 +32,17 @@ export class QuestionListComponent implements OnInit {
     );
   }
 
+  DeleteQuestion(id: number) {
+    let target: number = this.QaList.findIndex(
+      (question) => question.id == id
+    );
+    console.log(target);
+    this.QaList.splice(target, 1);
+    this.apiService.deleteQuestionAnswer(id).subscribe((res) => {
+      console.log(res);
+    });
+  }
+
   // Fetch favorites from the backend
   loadFavorites() {
     this.apiService.getFavorites().subscribe(
