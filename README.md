@@ -1,4 +1,5 @@
 # Study Buddy App
+![WebView](./study-buddy-ui/src/images/pic1.png)
 
 ## Overview
 This project is a **Flashcard App** built using **Angular and .NET Core**. It allows users to browse, favorite, and remove questions from their personalized list. The app features a dynamic UI with interactive elements, such as a flip-card design and a favorite (star) toggle system.
